@@ -1,6 +1,5 @@
 #include "headers.h"
-int _strlen(char *s);
-int _strncmp(char *s1, char *s2, int n);
+
 /**
  * _getenv - gets environment variable
  * @name: name of variable
