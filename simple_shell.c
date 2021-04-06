@@ -13,23 +13,30 @@ int main(void)
 
 	while (1)
 	{
-		printf("#cisfun$ ");
-		if (getline(&line, &l_len, stdin) == -1)
+		printf("$ ");
+		if (getline(&line, &l_len, stdin) == EOF)
 			break;
-		tok = strtok(line, separator);
-		for (i = 0; tok != '\0'; i++)
+
+		for (i = 0; line[i] != '\0'; i++)
 		{
-			tok = strtok(NULL, separator);
-			count_tok++;
+			if (line[i] == separator[0] && line[i+1] != '\0')
+				count_tok++;
 		}
+		printf("%d\n", count_tok);
+
 		command = malloc(sizeof(char *) * (count_tok + 1));
 		tok = strtok(line, separator);
-		for (i = 0; i < 20 && tok != NULL; i++)
+		command[0] = tok;
+
+		for (i = 1; tok != NULL; i++)
 		{
-			command[i] = tok;
+			printf("%s\n", tok);
 			tok = strtok(NULL, separator);
+			command[i] = tok;
+			if (command[i] == NULL)
+				break;
 		}
-		command[i] = NULL;
+
 		child = fork();
 		if (child == 0)
 		{
@@ -44,5 +51,6 @@ int main(void)
 	}
 	printf("\n");
 	free(line);
+	free(command);
 	exit(status);
 }
