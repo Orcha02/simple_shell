@@ -9,7 +9,7 @@ int main(void)
 	pid_t child;
 	char *tok, *line = NULL, **command = NULL, separator[] = {" \t\n\r"};
 	size_t i, l_len = 0;
-	int status, count_tok;
+	int status, count_tok, b;
 
 	while (1)
 	{
@@ -28,7 +28,7 @@ int main(void)
 		tok = strtok(line, separator);
 		command[0] = tok;
 
-		for (i = 1; tok != NULL; i++)
+		for (i = 1; i <= count_tok && tok != NULL; i++)
 		{
 			printf("%s\n", tok);
 			tok = strtok(NULL, separator);
@@ -36,7 +36,9 @@ int main(void)
 			if (command[i] == NULL)
 				break;
 		}
-
+		b = b_exit(command[0]);
+		if (b == 0)
+			break;
 		child = fork();
 		if (child == 0)
 		{
@@ -45,6 +47,8 @@ int main(void)
 				perror("execve");
 				exit(EXIT_FAILURE);
 			}
+			free(line);
+			free(command);
 		}
 		if (child > 0)
 			wait(&status);
