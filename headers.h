@@ -12,7 +12,7 @@
 #include <time.h>
 #include <libgen.h>
 
-
+extern char **environ;
 char *_getenv(const char *name);
 char *findpath(char *command);
 

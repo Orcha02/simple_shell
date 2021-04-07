@@ -1,14 +1,13 @@
 #include "headers.h"
 
 /**
- * _getenv - gets environment variable
+ * _getenv - gets environment variable.
  * @name: name of variable
  * Return: value
  */
 char *_getenv(const char *name)
 {
 	int len = _strlen((char *)name);
-	extern char **environ;
 	char **env = environ;
 
 	while (*env != NULL)

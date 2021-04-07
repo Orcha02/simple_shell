@@ -32,8 +32,8 @@ char *findpath(char *command)
 	free(command);
 	return (NULL);
 }
-int main(void)
-{
-	printf("%s\n", findpath("man"));
-	return (0);
-}
+/* int main(void) */
+/* { */
+/* 	printf("%s\n", findpath("man")); */
+/* 	return (0); */
+/* } */

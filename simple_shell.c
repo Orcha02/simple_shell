@@ -19,7 +19,7 @@ int main(void)
 
 		for (i = 0; line[i] != '\0'; i++)
 		{
-			if (line[i] == separator[0] && line[i+1] != '\0')
+			if (line[i] == separator[0] && line[i + 1] != '\0')
 				count_tok++;
 		}
 		printf("%d\n", count_tok);
@@ -40,7 +40,7 @@ int main(void)
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(command[0], command, NULL)) /*envp*/
+			if (execve(findpath(command[0]), command, NULL)) /*envp*/
 			{
 				perror("execve");
 				exit(EXIT_FAILURE);
