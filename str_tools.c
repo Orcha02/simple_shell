@@ -43,34 +43,68 @@ int _strncmp(char *s1, char *s2, int n)
  */
 char *str_concat(char *s1, char *s2)
 {
-	int i, j, k, l;
-	char *p;
+	char *array;
+	int i = 0, l1 = 0, l2 = 0;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
-	for (i = 0; *(s1 + i) != '\0'; i++)
-	{}
-	for (j = 0 ; *(s2 + j) != '\0' ; j++)
-	{}
-	p = malloc(sizeof(char) * (i + j + 1));
-	if (p == NULL)
+
+	while (s1[l1] != '\0')
 	{
+		l1++;
+	}
+
+	while (s2[l2] != '\0')
+	{
+		l2++;
+	}
+
+	array = malloc(sizeof(char) * (l1 + l2 + 1));
+	if (array == NULL)
 		return (NULL);
-	}
-	for (k = 0; k < i; k++)
+
+	while (*s1)
 	{
-		*(p + k) = *(s1 + k);
+		array[i] = *s1;
+		i++;
+		s1++;
 	}
-	for (l = 0; l < j; l++)
+
+	while (*s2)
 	{
-		*(p + (i + l)) = *(s2 + l);
+		array[i] = *s2;
+		i++;
+		s2++;
 	}
-	p[i + j] = '\0';
-	return (p);
+	array[i] = '\0';
+	return (array);
+}
+/**
+ * _strdup - string duplicate with malloc
+ *@str: string
+ * Return: the string
+ */
+char *_strdup(char *str)
+{
+	char *copy;
+	int i, largo = 0;
+
+	if (!str)
+		return (NULL);
+
+	while (str[largo] != '\0')
+	{
+		largo++;
+	}
+
+	copy = malloc(sizeof(char) * (largo + 1));
+	if (copy == NULL)
+		return (NULL);
+
+	for (i = 0; i <= largo; i++)
+		copy[i] = str[i];
+
+	return (copy);
 }
