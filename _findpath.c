@@ -11,6 +11,8 @@ char *findpath(char *command)
 	char *current_source;
 	char *tok;
 
+	if (stat(command, &stats) == 0)
+                return (command);
 
 	path = getenv("PATH");
 	tok = strtok(path, ":");
