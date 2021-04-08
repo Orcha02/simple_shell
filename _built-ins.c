@@ -1,18 +1,21 @@
 #include "headers.h"
 /**
- * b_exit - Checks for an exit
- * @command: array
- * Return: void
+ * b_env - prints the environment
+ * @ac: argument count
+ * @av: argument value
+ * @env: environ
+ * Return: always 0
  */
-int b_exit(char *command)
+void built_env(char **environ)
 {
-	char *b_exit;
-	char _exit[] = "exit";
+        unsigned int i, length;
 
-	b_exit = _exit;
-	if (_strncmp(command, b_exit, 4) == 0)
+        i = 0;
+	while (environ[i])
 	{
-		return (0);
+		length = _strlen(environ[i]);
+		write(STDOUT_FILENO, environ[i], length);
+		write(STDOUT_FILENO, "\n", 1);
+		++i;
 	}
-	return (1);
 }

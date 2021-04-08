@@ -8,6 +8,7 @@ int main(void)
 {
 	pid_t child;
 	char *tok = NULL, *line = NULL, **command = NULL, separator[] = " \t\n\r";
+	char *b_exit = "exit", *b_env = "env";
 	size_t i, l_len = 0;
 	int status = 0;
 	unsigned int len = 0;
@@ -22,7 +23,7 @@ int main(void)
 		if (*line == '\n')
 			break;
 
-		line[strlen(line) - 1] = '\0';
+		line[_strlen(line) - 1] = '\0';
 		len = find_lenght(line);
 		if (len == 0)
 			return ('\0');
@@ -35,18 +36,27 @@ int main(void)
 		tok = strtok(line, separator);
 		while (tok != NULL)
 		{
-			command[i] = malloc(strlen(tok) + 1);
+			command[i] = malloc(_strlen(tok) + 1);
 			if (command[i] == NULL)
 			{
 				_free_double_pointer(command);
 				return ('\0');
 			}
-			strncpy(command[i], tok, strlen(tok) + 1);
+			strncpy(command[i], tok, _strlen(tok) + 1);
 			tok = strtok(NULL, separator);
 			++i;
 		}
 		command[i] = NULL;
 
+		if (_strncmp(command[0], b_exit, 4) == 0)
+		{
+			_free_parent(line, command);
+			exit(0);
+		}
+		if (_strncmp(command[0], b_env, 3) == 0)
+		{
+			built_env(environ);
+		}
 		child = fork();
 		if (child == 0)
 		{
@@ -56,7 +66,6 @@ int main(void)
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		else
 		{
 			wait(&status);
@@ -64,7 +73,6 @@ int main(void)
 				_free_parent(line, command);
 			else
 				_free_parent(line, command);
-
 		}
 		line = NULL;
 	}

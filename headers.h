@@ -1,5 +1,5 @@
-#ifndef HEADERS_H
-#define HEADERS_H
+#ifndef _HEADERS_H_
+#define _HEADERS_H_
 
 #include <stdio.h>
 #include <unistd.h>
@@ -32,5 +32,5 @@ void _free_double_pointer(char **pointer);
 unsigned int find_lenght(char *s);
 
 /*_built-ins*/
-int b_exit(char *command);
+void built_env(char **environ);
 #endif /*HEADERS*/
