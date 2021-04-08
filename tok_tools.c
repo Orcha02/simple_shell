@@ -1,31 +1,31 @@
 #include "headers.h"
-/**
- * find_lenght - calculate the lenght of command line
- *@s: char pointer
- * Return: Always 0 (Success)
- */
 
+/**
+ * find_length - calculate the lenght of command line
+ *@s: char pointer
+ * Return: length of pointer
+ */
 unsigned int find_length(char *s)
 {
-        unsigned int count_tok = 0, i = 0, flag = 0;
+	unsigned int count_tok = 0, i = 0, flag = 0;
 
-        while(s[i] != '\0')
-        {
-
-                if (s[i] != ' ')
-                        flag = 1;
-                if ((flag && s[i + 1] == ' ') || (flag && s[i + 1] == '\0'))
-                {
-                        ++count_tok;
-                        flag = 0;
-                }
-                ++i;
-        }
-        return(count_tok);
+	while (s[i] != '\0')
+	{
+		if (s[i] != ' ')
+			flag = 1;
+		if ((flag && s[i + 1] == ' ') || (flag && s[i + 1] == '\0'))
+		{
+			++count_tok;
+			flag = 0;
+		}
+		++i;
+	}
+	return (count_tok);
 }
+
 /**
- * s_tok -
- * @str:
+ * s_tok - separate line in tokens
+ * @str: command line
  * Return: char
  */
 char **s_tok(char *str)
@@ -33,7 +33,7 @@ char **s_tok(char *str)
 	char separator[] = " \t\n\r";
 	char **command, *tok;
 	unsigned int len, i;
-	
+
 	str[_strlen(str) - 1] = '\0';
 	len = find_length(str);
 	if (len == 0)

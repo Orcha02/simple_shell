@@ -12,14 +12,14 @@ char *findpath(char *command)
 	char *tok;
 
 	if (stat(command, &stats) == 0)
-                return (command);
+		return (command);
 
 	path = getenv("PATH");
 	tok = strtok(path, ":");
 	command = str_concat("/", command);
 
-	/* stat() returns 0 on successful operation,
-	   otherwise returns -1 if unable to get file properties.*/
+/*stat() returns 0 on successful operation,*/
+/* otherwise returns -1 if unable to get file properties.*/
 	while (tok != NULL)
 	{
 		current_source = str_concat(tok, command);
@@ -34,8 +34,3 @@ char *findpath(char *command)
 	free(command);
 	return (NULL);
 }
-/* int main(void) */
-/* { */
-/* 	printf("%s\n", findpath("man")); */
-/* 	return (0); */
-/* } */

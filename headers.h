@@ -32,5 +32,6 @@ char **s_tok(char *str);
 
 /*_built-ins*/
 void built_env(char **environ);
+void check_builtin(char *line, char **command);
 
 #endif /*HEADERS*/

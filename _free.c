@@ -2,7 +2,7 @@
 
 /**
  * _free_double_pointer - Entry point
- *@pointer: double pointer
+ *@d_pointer: double pointer
  * Return: void
  */
 void _free_double_pointer(char **d_pointer)
