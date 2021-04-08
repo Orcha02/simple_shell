@@ -1,10 +1,10 @@
 #include "headers.h"
 
 /**
- * simple_shell - UNIX command line interpreter
+ * main - UNIX command line interpreter
  * Return: Always 0 (Success)
  */
-int simple_shell(void)
+int main(void)
 {
 	pid_t child;
 	char *line = NULL, **command = NULL;
@@ -21,7 +21,7 @@ int simple_shell(void)
 
 		command = s_tok(line);
 
-		check_builtin(command);
+		check_builtin(line, command);
 
 		child = fork();
 		if (child == 0)
