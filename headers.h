@@ -15,8 +15,6 @@
 extern char **environ;
 char *_getenv(const char *name);
 char *findpath(char *command);
-unsigned int find_lenght(char *s);
-
 
 /*str_tools*/
 int _strlen(char *s);
@@ -28,9 +26,11 @@ char *_strdup(char *str);
 void _free_parent(char *buffer, char **commands);
 void _free_double_pointer(char **pointer);
 
-/*strtok*/
-unsigned int find_lenght(char *s);
+/*tok_tools*/
+unsigned int find_length(char *s);
+char **s_tok(char *str);
 
 /*_built-ins*/
 void built_env(char **environ);
+
 #endif /*HEADERS*/
