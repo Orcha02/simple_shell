@@ -26,7 +26,7 @@ int main(void)
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(findpath(command[0]), command, NULL)) /*envp*/
+			if (execve(findpath(command[0]), command, environ))
 			{
 				perror("execve");
 				exit(EXIT_FAILURE);
