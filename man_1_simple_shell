@@ -1,0 +1,42 @@
+.TH Our simple_shell "April 9 2021" "0.1" "simple_shell Manual Page"
+.SH NAME
+simple_shell - Simple UNIX command interpreter (simple_shell)
+.SH SYNOPSIS
+simple_shell [file_name]
+.SH DESCRIPTION
+.sp
+simple_shell is an emulation of the UNIX command interpreter
+.SH Overview
+.sp
+As a simulation simple_shell reads command lines from either a file or the terminal, interprets them, and generally executes other commands.
+.SH INVOCATION
+.SP
+If no args are present and if the standard input of the shell is connected to a terminal  the shell is considered an interactive shell.
+.SH EXAMPLES
+.sp
+.SH INTERACTIVE MODE:
+.sp
+$ ./simple_shell
+.sp
+$ /bin/pwd ||  $pwd
+.SH Output: /home/vagrant/simple_shell
+.sp
+$ ./simple_shell
+.sp
+$ /bin/ls  ||  $ls
+.SH Output: AUTHORS  _built-ins.c  _findpath.c  _free.c  _getenv.c  headers.h  man_1_simple_shell  README.md  simple_shell.c  str_tools.c  tok_tools.c
+.sp
+.SH NON-INTERACTIVE MODE:
+.sp
+$ echo "/bin/pwd" | ./simple_shell
+.SH Output: /home/vagrant/simple_shell
+.SH RETURN VALUE
+Exit status at the end of a run
+.SH SEE ALSO
+Run man sh
+.SH BUGS
+For any encounter of errors please report to the emails:
+.sp
+2732@holbertonschool.com 2624@holbertonschool.com
+.SH AUTHOR
+Written by Yerardin Perlaza and Daniel Ortega
