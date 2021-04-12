@@ -6,7 +6,7 @@
  */
 char *findpath(char *command)
 {
-	char *path;
+	char *path, *commandtoprint;
 	struct stat stats;
 	char *current_source;
 	char *tok;
@@ -16,6 +16,7 @@ char *findpath(char *command)
 
 	path = getenv("PATH");
 	tok = strtok(path, ":");
+	commandtoprint = command;
 	command = str_concat("/", command);
 
 /*stat() returns 0 on successful operation,*/
@@ -31,7 +32,7 @@ char *findpath(char *command)
 		free(current_source);
 		tok = strtok(NULL, ":");
 	}
-	error_printing(path, find_length(command), command);
+	error_printing(path, find_length(command), commandtoprint);
 	print_str(": not found", 0);
 	free(command);
 	return (NULL);

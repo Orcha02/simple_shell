@@ -24,12 +24,18 @@ int main(void)
 		check_builtin(line, command);
 
 		child = fork();
+		if (child == -1)
+		{
+			perror("Error:");
+			exit(EXIT_FAILURE);
+		}
 		if (child == 0)
 		{
 			if (execve(findpath(command[0]), command, environ) == -1)
 			{
-/*				exec_error(line, find_length(line), line);
-				exit(100);*/
+/*				error_printing(command[0], find_length(line), line);
+				print_str(": not found", 0);*/
+				
 			}
 		}
 		else
