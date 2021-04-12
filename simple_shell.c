@@ -26,10 +26,10 @@ int main(void)
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(findpath(command[0]), command, environ))
+			if (execve(findpath(command[0]), command, environ) == -1)
 			{
-				perror("execve");
-				exit(EXIT_FAILURE);
+/*				exec_error(line, find_length(line), line);
+				exit(100);*/
 			}
 		}
 		else

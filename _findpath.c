@@ -31,6 +31,8 @@ char *findpath(char *command)
 		free(current_source);
 		tok = strtok(NULL, ":");
 	}
+	error_printing(path, find_length(command), command);
+	print_str(": not found", 0);
 	free(command);
 	return (NULL);
 }

@@ -34,4 +34,11 @@ char **s_tok(char *str);
 void built_env(char **environ);
 void check_builtin(char *line, char **command);
 
+/*print_error*/
+void error_printing(char *av, int count, char *command);
+void exec_error(char *av, int count, char *tmp_command);
+void print_str(char *str, int new_line);
+int print_number(int n);
+int _write_char(char c);
+
 #endif /*HEADERS*/
