@@ -37,8 +37,8 @@ void check_builtin(char *line, char **command);
 /*print_error*/
 void error_printing(char *av, int count, char *command);
 void exec_error(char *av, int count, char *tmp_command);
-void print_str(char *str, int new_line);
+void print_string(char *str, int new_line);
 int print_number(int n);
-int _write_char(char c);
+int _write(char c);
 
 #endif /*HEADERS*/

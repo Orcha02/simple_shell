@@ -33,7 +33,7 @@ char *findpath(char *command)
 		tok = strtok(NULL, ":");
 	}
 	error_printing(path, find_length(command), commandtoprint);
-	print_str(": not found", 0);
+	print_string(": not found", 0);
 	free(command);
 	return (NULL);
 }
