@@ -1,21 +1,41 @@
 #include "headers.h"
 
+/**
+ * error_printing - Entry point
+ *@av: command
+ *@count: tokens
+ *@command: char string
+ * Return: Always 0 (Success)
+ */
 void error_printing(char *av, int count, char *command)
 {
-	print_str(av, 1);
-	print_str(": ", 1);
+	print_string(av, 1);
+	print_string(": ", 1);
 	print_number(count);
-	print_str(": ", 1);
-	print_str(command, 1);
+	print_string(": ", 1);
+	print_string(command, 1);
 }
+/**
+ * exec_error - Entry point
+ *@av: command[0]
+ *@count: count tokens
+ *@tmp_command: command
+ * Return: void
+ */
 void exec_error(char *av, int count, char *tmp_command)
 {
 	error_printing(av, count, tmp_command);
-	print_str(": ", 1);
+	print_string(": ", 1);
 	perror("");
 	exit(1);
 }
-void print_str(char *str, int new_line)
+/**
+ * print_string - Entry point
+ *@str: char string
+ *@new_line: string
+ * Return: void
+ */
+void print_string(char *str, int new_line)
 {
 	int i;
 
@@ -26,6 +46,11 @@ void print_str(char *str, int new_line)
 	if (new_line == 0)
 		write(STDOUT_FILENO, "\n", 1);
 }
+/**
+ * print_number - Entry point
+ *@n: int
+ * Return: length
+ */
 int print_number(int n)
 {
 	int div;
@@ -42,14 +67,19 @@ int print_number(int n)
 
 	for (; div != 0; )
 	{
-		len += _write_char('0' + num / div);
+		len += _write('0' + num / div);
 		num %= div;
 		div /= 10;
 	}
 
 	return (len);
 }
-int _write_char(char c)
+/**
+ * _write - Entry point
+ *@c: character
+ * Return: Always 0 (Success)
+ */
+int _write(char c)
 {
 	return (write(1, &c, 1));
 }
