@@ -1,4 +1,4 @@
-.TH Our simple_shell "April 9 2021" "0.1" "simple_shell Manual Page"
+.TH Our simple_shell "April 9 2021" "0.2" "simple_shell Manual Page"
 .SH NAME
 simple_shell - Simple UNIX command interpreter (simple_shell)
 .SH SYNOPSIS
@@ -6,7 +6,7 @@ simple_shell [file_name]
 .SH DESCRIPTION
 .sp
 simple_shell is an emulation of the UNIX command interpreter
-.SH Overview
+.SH OVERVIEW
 .sp
 As a simulation simple_shell reads command lines from either a file or the terminal, interprets them, and generally executes other commands.
 .SH INVOCATION
@@ -41,5 +41,5 @@ Run man sh
 For any encounter of errors please report to the emails:
 .sp
 2732@holbertonschool.com 2624@holbertonschool.com
-.SH AUTHOR
+.SH AUTHORS
 Written by Yerardin Perlaza and Daniel Ortega
