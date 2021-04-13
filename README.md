@@ -27,6 +27,7 @@ An interactive shell generally prompts before each command and handles programmi
 
 ## Arguments
 - The command line arguments are passed through the main function: int main(int ac, char **av);
+
 &rarr; av is a NULL terminated array of strings
 &rarr; ac is the number of items in av
 - av[0] usually contains the name used to invoke the current program. av[1] is the first argument of the program, av[2] the second, and so on.
@@ -45,6 +46,7 @@ An interactive shell generally prompts before each command and handles programmi
 
 ## Environment
 - We have seen earlier that the shell uses an environment list, where environment variables are stored. The list is an array of strings, with the following format: var=value, where var is the name of the variable and value its value.
+
 &rarr; As a reminder, you can list the environment with the command printenv
 
 ## Files and Descriptions
