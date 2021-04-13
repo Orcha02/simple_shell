@@ -38,6 +38,7 @@ int main(void)
 				_free_parent(line, command);
 			else
 				_free_parent(line, command);
+			exit(127);
 		}
 		line = NULL;
 	}
