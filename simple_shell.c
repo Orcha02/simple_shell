@@ -24,7 +24,7 @@ int main(void)
 		check_builtin(line, command);
 
 		child = fork();
-		if (child == -1)
+		if (child == 1)
 			exit(EXIT_FAILURE);
 		if (child == 0)
 		{
@@ -37,7 +37,10 @@ int main(void)
 			if (command == NULL)
 				_free_parent(line, command);
 			else
+			{
 				_free_parent(line, command);
+				exit(127);
+			}
 		}
 		line = NULL;
 	}
