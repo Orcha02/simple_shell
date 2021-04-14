@@ -15,10 +15,10 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		if (getline(&line, &l_len, stdin) == -1)
+		if (getline(&line, &l_len, stdin) == EOF)
 			break;
 		if (*line == '\n')
-			break;
+			continue;
 
 		command = s_tok(line);
 		check_builtin(line, command);
