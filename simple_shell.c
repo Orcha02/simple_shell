@@ -40,7 +40,10 @@ int main(void)
 			if (command == NULL)
 				_free_parent(line, command);
 			else
+			{
 				_free_parent(line, command);
+				exit(127);
+			}		
 		}
 		line = NULL;
 	}
