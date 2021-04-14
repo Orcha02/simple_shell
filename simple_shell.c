@@ -23,12 +23,9 @@ int main(void)
 		command = s_tok(line);
 		if (command == NULL)
 			continue;
-
 		check_builtin(line, command);
 
 		child = fork();
-		if (child == -1)
-			exit(EXIT_FAILURE);
 		if (child == 0)
 		{
 			if (execve(findpath(command[0]), command, environ) == -1)
