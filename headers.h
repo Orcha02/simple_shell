@@ -1,6 +1,8 @@
 #ifndef _HEADERS_H_
 #define _HEADERS_H_
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
