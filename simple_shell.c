@@ -13,14 +13,14 @@ int main(void)
 
 	while (1)
 	{
-		isatty(STDIN_FILENO) ? write(STDOUT_FILENO, "$ ", 2) : status;
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&line, &l_len, stdin) == -1)
 			break;
 		if (*line == '\n')
 			break;
 
 		command = s_tok(line);
-
 		check_builtin(line, command);
 
 		child = fork();
@@ -29,7 +29,10 @@ int main(void)
 		if (child == 0)
 		{
 			if (execve(findpath(command[0]), command, environ) == -1)
+			{
+				_free_parent(line, command);
 				exit(EXIT_FAILURE);
+			}
 		}
 		else
 		{
@@ -41,7 +44,6 @@ int main(void)
 		}
 		line = NULL;
 	}
-	isatty(STDIN_FILENO) ? write(STDOUT_FILENO, "\n", 1) : status;
 	free(line);
 	exit(status);
 }

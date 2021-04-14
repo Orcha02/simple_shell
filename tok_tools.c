@@ -53,7 +53,7 @@ char **s_tok(char *str)
 			_free_double_pointer(command);
 			return ('\0');
 		}
-		strncpy(command[i], tok, _strlen(tok) + 1);
+		_strncpy(command[i], tok, _strlen(tok) + 1);
 		tok = strtok(NULL, separator);
 		++i;
 	}

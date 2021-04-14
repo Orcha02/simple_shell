@@ -21,6 +21,7 @@ int _strlen(char *s);
 int _strncmp(char *s1, char *s2, int n);
 char *str_concat(char *s1, char *s2);
 char *_strdup(char *str);
+char *_strncpy(char *dest, char *src, int n);
 
 /*free*/
 void _free_parent(char *buffer, char **commands);

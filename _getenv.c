@@ -18,11 +18,3 @@ char *_getenv(const char *name)
 	}
 	return (NULL);
 }
-/*
- *int main(void)
- *{
- *	printf("real getenv: %s\n", getenv("PATH"));
- *	printf("my getenv: %s\n", _getenv("PATH"));
- *	return (0);
- *}
-*/

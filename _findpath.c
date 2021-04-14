@@ -14,7 +14,7 @@ char *findpath(char *command)
 	if (stat(command, &stats) == 0)
 		return (command);
 
-	path = getenv("PATH");
+	path = _getenv("PATH");
 	tok = strtok(path, ":");
 	commandtoprint = command;
 	command = str_concat("/", command);
