@@ -17,8 +17,8 @@ int main(void)
 			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&line, &l_len, stdin) == EOF)
 			break;
-		if (*line == '\n')
-			continue;
+		if (*line == '\n' || *line == '\t')
+		continue;
 
 		command = s_tok(line);
 		if (command == NULL)
