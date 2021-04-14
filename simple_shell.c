@@ -21,6 +21,9 @@ int main(void)
 			continue;
 
 		command = s_tok(line);
+		if (command == NULL)
+			continue;
+
 		check_builtin(line, command);
 
 		child = fork();
@@ -40,10 +43,7 @@ int main(void)
 			if (command == NULL)
 				_free_parent(line, command);
 			else
-			{
 				_free_parent(line, command);
-				exit(127);
-			}		
 		}
 		line = NULL;
 	}

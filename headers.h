@@ -17,6 +17,7 @@
 extern char **environ;
 char *_getenv(const char *name);
 char *findpath(char *command);
+int _check_line(char *line);
 
 /*str_tools*/
 int _strlen(char *s);
