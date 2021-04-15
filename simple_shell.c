@@ -22,27 +22,32 @@ int main(void)
 		command = s_tok(line);
 		if (command == NULL)
 			continue;
-		check_builtin(line, command, &retVal);
-		child = fork();
-		if (child == 0)
+		if (check_builtin(line, command, &retVal) == 0)
 		{
-			if (execve(findpath(command[0], &retVal), command, environ) == -1)
+			child = fork();
+			if (child == 0)
 			{
-				_free_parent(line, command);
-				exit(retVal);
+				if (execve(findpath(command[0], &retVal), command, environ) == -1)
+				{
+					_free_parent(line, command);
+					exit(retVal);
+				}
 			}
+			else
+			{
+				wait(&status);
+				if (command == NULL)
+					_free_parent(line, command);
+				else
+					_free_parent(line, command);
+				if (WIFEXITED(status))
+					retVal = WEXITSTATUS(status);
+			}
+			line = NULL;
 		}
 		else
-		{
-			wait(&status);
-			if (command == NULL)
-				_free_parent(line, command);
-			else
-				_free_parent(line, command);
-			if (WIFEXITED(status))
-				retVal = WEXITSTATUS(status);
-		}
-		line = NULL;
+			_free_double_pointer(command);
+			
 	}
 	free(line);
 	exit(status);

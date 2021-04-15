@@ -10,18 +10,33 @@ An interactive shell generally prompts before each command and handles programmi
 ### Examples:
 #### Interactive Mode:
      $ ./simple_shell
-     $ /bin/pwd ||  $pwd
+     $ /bin/pwd
      Output: /home/vagrant/simple_shell
+
+     $ ./simple_shell
+     $ pwd
+     Output: /home/vagrant/simple_shell
+
 #### OR
      $ ./simple_shell
-     $ /bin/ls  ||  $ls
+     $ /bin/ls
+     Output: AUTHORS _built-ins.c _findpath.c _free.c _getenv.c headers.h man_1_simple_shell README.md simple_shell.c str_tools.c tok_tools.c
+
+     $ ./simple_shell
+     $ ls
      Output: AUTHORS _built-ins.c _findpath.c _free.c _getenv.c headers.h man_1_simple_shell README.md simple_shell.c str_tools.c tok_tools.c
 
 #### Non-Interactive Mode:
-     $ echo "/bin/pwd" | ./simple_shell    ||     echo "pwd" | ./simple_shell
+     $ echo "/bin/pwd" | ./simple_shell
+     Output: /home/vagrant/simple_shell
+
+     $ echo "pwd" | ./simple_shell
      Output: /home/vagrant/simple_shell
 
 # Composed by:
+## Compile with:
+- gcc -Wall -Werror -Wextra -pedantic *.c -o ./simple_shell
+
 ## PID & PPID
 - A process is an instance of an executing program, that has a unique process ID. This process ID is used by many functions and system calls to interact with and manipulate processes. In order to retrieve the current process ID, you can use the system call getpid (man 2 getpid):
 
@@ -63,3 +78,7 @@ An interactive shell generally prompts before each command and handles programmi
 | man_1_simple_shell | Our manual with documentation about how our simple_shell works |
 | str_tools.c | Contains: _strlen, _strncmp, *str_concat, *_strdup |
 | tok_tools.c |  Contains: find_length & **s_tok |
+
+## AUTHORS
+- Yerardin Perlaza
+- Daniel Ortega

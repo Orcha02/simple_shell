@@ -34,7 +34,8 @@ unsigned int find_length(char *s);
 char **s_tok(char *str);
 
 /*_built-ins*/
-void check_builtin(char *line, char **command, int *retVal);
+int check_builtin(char *line, char **command, int *retVal);
+void built_env(char **environ);
 
 /*print_error*/
 void error_printing(char *av, int count, char *command);
