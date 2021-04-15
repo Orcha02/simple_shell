@@ -1,12 +1,10 @@
 #include "headers.h"
-
 /**
  * main - UNIX command line interpreter
  * Return: Always 0 (Success)
  */
 int main(void)
-{
-	pid_t child;
+{	pid_t child;
 	char *line = NULL, **command = NULL;
 	size_t l_len = 0;
 	int status = 0, retVal = 0;
@@ -18,7 +16,7 @@ int main(void)
 		if (getline(&line, &l_len, stdin) == EOF)
 			break;
 		if (*line == '\n' || *line == '\t')
-		continue;
+			continue;
 		command = s_tok(line);
 		if (command == NULL)
 			continue;
@@ -36,10 +34,7 @@ int main(void)
 			else
 			{
 				wait(&status);
-				if (command == NULL)
-					_free_parent(line, command);
-				else
-					_free_parent(line, command);
+				_free_parent(line, command);
 				if (WIFEXITED(status))
 					retVal = WEXITSTATUS(status);
 			}
@@ -47,7 +42,6 @@ int main(void)
 		}
 		else
 			_free_double_pointer(command);
-			
 	}
 	free(line);
 	exit(status);
