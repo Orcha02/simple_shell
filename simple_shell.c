@@ -19,12 +19,10 @@ int main(void)
 			break;
 		if (*line == '\n' || *line == '\t')
 		continue;
-
 		command = s_tok(line);
 		if (command == NULL)
 			continue;
 		check_builtin(line, command, &retVal);
-
 		child = fork();
 		if (child == 0)
 		{
@@ -41,7 +39,6 @@ int main(void)
 				_free_parent(line, command);
 			else
 				_free_parent(line, command);
-
 			if (WIFEXITED(status))
 				retVal = WEXITSTATUS(status);
 		}

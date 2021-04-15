@@ -2,6 +2,7 @@
 /**
  * findpath - find the directory of a command
  *@command: string with the command
+ *@retVal: return value of exit
  * Return: the directory of the command
  */
 char *findpath(char *command, int *retVal)

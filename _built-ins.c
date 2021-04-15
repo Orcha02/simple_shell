@@ -4,6 +4,7 @@
  * check_builtin - execute built-ins
  *@line: command line
  *@command: separate tokens
+ *@retVal: return value of exit
  * Return: void
  */
 
@@ -14,7 +15,6 @@ void check_builtin(char *line, char **command, int *retVal)
 	if (_strncmp(command[0], b_exit, 4) == 0)
 	{
 		_free_parent(line, command);
-		printf("retVal = %d\n", *retVal);
 		exit(*retVal);
 	}
 	if (_strncmp(command[0], b_env, 3) == 0)
