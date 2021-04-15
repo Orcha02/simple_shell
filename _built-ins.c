@@ -7,14 +7,15 @@
  * Return: void
  */
 
-void check_builtin(char *line, char **command)
+void check_builtin(char *line, char **command, int *retVal)
 {
 	char *b_exit = "exit", *b_env = "env";
 
 	if (_strncmp(command[0], b_exit, 4) == 0)
 	{
 		_free_parent(line, command);
-		exit(0);
+		printf("retVal = %d\n", *retVal);
+		exit(*retVal);
 	}
 	if (_strncmp(command[0], b_env, 3) == 0)
 		built_env(environ);

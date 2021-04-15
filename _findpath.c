@@ -4,7 +4,7 @@
  *@command: string with the command
  * Return: the directory of the command
  */
-char *findpath(char *command)
+char *findpath(char *command, int *retVal)
 {
 	char *path, *commandtoprint;
 	struct stat stats;
@@ -35,5 +35,6 @@ char *findpath(char *command)
 	error_printing(path, find_length(command), commandtoprint);
 	print_string(": not found", 0);
 	free(command);
+	*retVal = 127;
 	return (NULL);
 }

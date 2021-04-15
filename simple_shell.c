@@ -9,7 +9,7 @@ int main(void)
 	pid_t child;
 	char *line = NULL, **command = NULL;
 	size_t l_len = 0;
-	int status = 0;
+	int status = 0, retVal = 0;
 
 	while (1)
 	{
@@ -23,15 +23,15 @@ int main(void)
 		command = s_tok(line);
 		if (command == NULL)
 			continue;
-		check_builtin(line, command);
+		check_builtin(line, command, &retVal);
 
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(findpath(command[0]), command, environ) == -1)
+			if (execve(findpath(command[0], &retVal), command, environ) == -1)
 			{
 				_free_parent(line, command);
-				exit(EXIT_FAILURE);
+				exit(retVal);
 			}
 		}
 		else
@@ -41,6 +41,9 @@ int main(void)
 				_free_parent(line, command);
 			else
 				_free_parent(line, command);
+
+			if (WIFEXITED(status))
+				retVal = WEXITSTATUS(status);
 		}
 		line = NULL;
 	}

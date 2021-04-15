@@ -16,8 +16,7 @@
 
 extern char **environ;
 char *_getenv(const char *name);
-char *findpath(char *command);
-int _check_line(char *line);
+char *findpath(char *command, int *retVal);
 
 /*str_tools*/
 int _strlen(char *s);
@@ -36,7 +35,7 @@ char **s_tok(char *str);
 
 /*_built-ins*/
 void built_env(char **environ);
-void check_builtin(char *line, char **command);
+void check_builtin(char *line, char **command, int *retVal);
 
 /*print_error*/
 void error_printing(char *av, int count, char *command);
