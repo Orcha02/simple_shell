@@ -45,7 +45,4 @@ void print_string(char *str, int new_line);
 int print_number(int n);
 int _write(char c);
 
-/*_signal*/
-void signintHandler(int sign);
-
 #endif /*HEADERS*/

@@ -13,7 +13,6 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		signal(SIGINT, signintHandler);
 		if (getline(&line, &l_len, stdin) == EOF)
 			break;
 		if (*line == '\n' || *line == '\t')
