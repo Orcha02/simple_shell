@@ -13,7 +13,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <libgen.h>
-#include <signal.h>
 
 extern char **environ;
 char *_getenv(const char *name);
