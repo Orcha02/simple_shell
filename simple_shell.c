@@ -13,6 +13,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
+		signal(SIGINT, signintHandler);
 		if (getline(&line, &l_len, stdin) == EOF)
 			break;
 		if (*line == '\n' || *line == '\t')
@@ -21,19 +22,16 @@ int main(void)
 		if (command == NULL)
 			continue;
 		if (check_builtin(line, command, &retVal) == 0)
-		{
-			child = fork();
+		{			child = fork();
 			if (child == 0)
 			{
 				if (execve(findpath(command[0], &retVal), command, environ) == -1)
-				{
-					_free_parent(line, command);
+				{					_free_parent(line, command);
 					exit(retVal);
 				}
 			}
 			else
-			{
-				wait(&status);
+			{				wait(&status);
 				_free_parent(line, command);
 				if (WIFEXITED(status))
 					retVal = WEXITSTATUS(status);

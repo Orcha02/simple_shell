@@ -13,6 +13,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <libgen.h>
+#include <signal.h>
 
 extern char **environ;
 char *_getenv(const char *name);
@@ -43,5 +44,8 @@ void exec_error(char *av, int count, char *tmp_command);
 void print_string(char *str, int new_line);
 int print_number(int n);
 int _write(char c);
+
+/*_signal*/
+void signintHandler(int sign);
 
 #endif /*HEADERS*/
